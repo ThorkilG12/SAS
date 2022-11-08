@@ -31,7 +31,9 @@ WITH recursive ancestor (child, parent, l) as (
 SELECT distinct parent, child, l FROM ancestor 
 WHERE parent IS NOT NULL order by child;
 ```
-In SAS it looks like this:
+<img width="148" alt="image" src="https://user-images.githubusercontent.com/12120277/200512659-004636ef-3f77-4dd7-ab97-268faca86023.png">
+
+## In SAS it looks like this: ##
 ```SAS
 data famtree;
   input parent $ child $;
@@ -93,8 +95,12 @@ run;
   run; 
 %mend;
 %ftmacro; 
-proc print data=ancestor;
+proc print data=final;
   title This is dynamic - all leves and 10 obs.;
 run;
 ```
+<img width="225" alt="image" src="https://user-images.githubusercontent.com/12120277/200512393-e7076a44-7dfa-4ff2-9db9-ceb8c331b46c.png">
+
+All credits goes to https://yazispring.wordpress.com/2013/07/07/recursive-query-in-sas-and-sql-server/  
+The use of temp tables in PostgreSQL is done by me.  
 --oOo--
