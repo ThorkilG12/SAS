@@ -69,6 +69,9 @@ proc sort data=ancestor;
 proc print data=ancestor;
   title Child k is missing - Only 9 obs.;
 run;
+```
+### Let's create a macro that can do n levels. ###
+```SAS
 %macro ftmacro;
   %local level nlevel;
   %let level=1; 
