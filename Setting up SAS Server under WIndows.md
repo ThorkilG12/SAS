@@ -3,7 +3,7 @@
 2019 Essentials - SAS Server TEST2019 - User Admin2019 - 192.168.1.219  
 2019 Essentials - DNS and File Server - 192.168.1.252  
 Windows 11 - SAS Foundation => SAS EG, SAS DM and SAS Studio
-## Initial preperation of the servers ##
+## Initial preperation of the servers and PC##
 Be sure that WIndows is not "holding" port 80/443  
 Disable IP Ver 6  
 Set 192.168.1.252 as primary DNS  
@@ -11,7 +11,9 @@ Allow Remote Controle (RDP)
 ## Install SAS ##
 The two SAS Servers are installed by using a PLAN-file, and after a 100% successfull install the server boots up with these services running: 
 <img width="592" alt="image" src="https://user-images.githubusercontent.com/12120277/202742705-886fea9e-ab6d-4cf9-85ce-f71f0b4fbc5e.png">  
-SAS EG 8.3, SAS DM 9.4, SAS DI, SAS MC, SAS ODS Graphichs Editor
+SAS EG 8.3, SAS DM 9.4, SAS DI, SAS MC, SAS ODS Graphichs Editor  
+On server goto folder `C:\Program Files\SASHome\SASFoundation\9.4\core\sashelp` and copy the file `class.sas7bdat`. Rename the copy to `_Test2019Class.sas7bdat`  
+This shows the clients in this test what server they look at.
 ## Running programs direct on the server ##  
 ### SAS DM - Display Manager ###  
 ```
@@ -38,11 +40,34 @@ Default placement of the WORK folder, and the relation to the windows process th
 <img width="640" alt="image" src="https://user-images.githubusercontent.com/12120277/202751788-d0f93337-3b9b-4b74-b826-3a5c28b04d71.png">
 
 ### SAS Foundation - With SAS CONNECT ###
-Using SAS Integration Tech. COnfig Wizard
+Using SAS Integration Tech. Config Wizard
+C:\Program Files\SASHome\SASFoundation\9.4\core\sashelp
 ## Running SAS EG from client ##  
-
 The services Metadata, port 8561 and Object Spawner, port 8581 must be started on server  
 The server firewall must be open for TCP port 8561 and 8591  
 A look in SAS MC Server Manager shows that SASAPP - Workspace Server uses port 8591, and that explains why that port has to be open in firewall  
 User Starts SAS EG that connects to Metadat on port 8561. When user try to browse librarys on server, metadata service talks to spawner to start a workspace server for the user, using port 8591
+## Running SAS DM on client - using the server ##  
+
+## PC with Foundation vs. PC with SAS EG only ##
+It is important to understand, that when you install Foundation on a PC, then this PC will have it's own *sas.exe* and a licence.  
+It means that you can run SAS EG on your PC and that SAS Studio also can run on your laptop  
+<img width="953" alt="image" src="https://user-images.githubusercontent.com/12120277/202843931-037a83e6-2dc8-4ef6-b249-61798be664a2.png">
+
+### Using the browser ###
+
+## Server admin ##
+<img width="307" alt="image" src="https://user-images.githubusercontent.com/12120277/202843644-4e67630d-a405-42a5-85b0-2d7e3a006131.png">
+
+On the PC where I have installed only SAS EG and SAS Studio (no Foundation) I have an error `Failed to load SAS Studio Tasks`
+Is this about two different products ? SAS Studio and SAS Visual Studio ?
+This was part of the installation:  
+<img width="221" alt="image" src="https://user-images.githubusercontent.com/12120277/202849235-f0c080ad-6c96-4a52-b4a8-421f04dc4aaa.png">
+
+In order to use SAS Visual Analytics both as an Admin and as a user, it the ONLY app a browser ?
+
+
+
+
+
 
